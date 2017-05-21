@@ -1,0 +1,23 @@
+{
+  "name": "markov-bot",
+  "version": "1.0.0",
+  "description": "Discord bot that makes use of Markov chains to create semi-organic sentences.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Fustran/markov-bot.git"
+  },
+  "author": "Josh Fangrad",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Fustran/markov-bot/issues"
+  },
+  "homepage": "https://github.com/Fustran/markov-bot#readme",
+  "dependencies": {
+    "discord.js": "^11.1.0"
+  },
+  "devDependencies": {}
+}
