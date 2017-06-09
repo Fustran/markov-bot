@@ -1,24 +1,22 @@
 const fs = require('fs');
 
 var settings;
-if (fs.existsSync('settings.json')) {
+if (fs.existsSync('settings.json') && fs.readFileSync('settings.json', 'utf8').length > 0) {
     settings = JSON.parse(fs.readFileSync('settings.json', 'utf8'));
 } else {
-    let defaultSettings = {'nickname': 'Markov-bot', 'speak': true};
+    let defaultSettings = {'speak': true};
     settings = JSON.stringify(defaultSettings, null, 4);
     fs.writeFile('settings.json', settings, (err) => {
         if (err) return console.warn(err);
     });
 }
 
-let config = {
+exports.cfg = {
     token: process.env.MARKOV_BOT_TOKEN,
-    name:  settings.nickname || 'Markov-bot',
     commandChar: process.env.MARKOV_COMMAND_CHAR || '?',
-    pgName: process.env.MARKOV_PGNAME,
-    pgUser: process.env.MARKOV_PGUSER,
-    pgPass: process.env.MARKOV_PGPASS,
-    pgPort: process.env.MARKOV_PGPORT
+    pgHost: process.env.MARKOV_PGHOST || 'localhost',
+    pgName: process.env.MARKOV_PGNAME || 'postgres',
+    pgUser: process.env.MARKOV_PGUSER || 'postgres',
+    pgPass: process.env.MARKOV_PGPASS || 'password',
+    pgPort: process.env.MARKOV_PGPORT || '5432'   
 };
-
-module.exports = config;
